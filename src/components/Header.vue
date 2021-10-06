@@ -3,8 +3,8 @@
         <nav class="nav-bar">
             <ul class="left-items">
                 <li>
-                    <p id="icon-burguer"><img src="../assets/svgs/icon_hamburguer.svg" alt=""></p>
-                    <div class="dropdown-menu">
+                    <img v-on:click="openMenu" v-if="showButtonBurguer" id="icon-burguer" alt="burguer" src="../assets/svgs/icon_hamburguer.svg">
+                    <div id="dropdown-menu" v-if="menuActive" :class="{active:menuActive}">
                         <div class="dropdown-luta">
                             <p class="title-luta">Luta</p>
                             <p class="items-dropdown">Mortal Kombat</p>
@@ -27,7 +27,8 @@
                         </div>
                     </div>
                 </li>
-                <img alt="" id="logo" src="../assets/img/logoN1rush.png">
+               <img v-on:click="closeMenu" v-if="showButtonClose" id="close-button" src="../assets/svgs/close.svg" style="width:30px" alt="close">
+               <img id="logo" alt="logoN1" src="../assets/img/logoN1rush.png">
             </ul>
             <div class="right-items">
                 <div class="right-item">
@@ -41,23 +42,59 @@
                 </div>
 
                 <div class="right-item">
-                   <a href=""><img src="../assets/svgs/shopping-bag-solid.svg" alt=""></a>
+                    <img src="../assets/svgs/shopping-bag-solid.svg" alt="">
+                   <a href=""></a>
                 </div>
             </div>
         </nav>
+
+        <div class="container">
+            <div class="content">
+                <div class="title-content">
+                    <h1>Mortal Kombat</h1>
+                </div>
+                <div class="itemOne">
+                    <p>R$ 299<span>,99</span></p>
+                </div>
+                <div class="itemTwo">
+                    <p>Mortal Kombat X combina uma apresentação cinemática única com uma jogabilidade totalmente nova. Os jogadores podem escolher pela primeira vez diversas variantes de cada personagem, afetando tanto a estratégia como o estilo de luta.</p>
+                </div>
+            </div>
+        </div>
       </header>
 </template>
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    data() {
+        return {
+            menuActive: false,
+            showButtonClose: false,
+            showButtonBurguer: true
+        }
+    },
+    methods: {
+        openMenu: function() {
+            this.menuActive = true;
+            this.showButtonClose = true;
+            this.showButtonBurguer = false;
+        },
+        closeMenu: function() {
+            this.menuActive = false;
+            this.showButtonClose = false;
+            this.showButtonBurguer = true;
+        }
+    }
 }
 </script>
 
 <style scoped>
     header {
+        position: sticky;
         background-image: url('../assets/img/principal_banner_desktop.jpg');
         background-repeat: no-repeat;
+        background-size: cover;
         width: 100vw;
         height: 100vh;
     }
@@ -65,6 +102,11 @@ export default {
     nav { 
         display: flex;
         justify-content: space-around;    
+    }
+
+    #close-button {
+        margin-left: -30px;
+        cursor: pointer;
     }
 
     .left-items {
@@ -115,10 +157,45 @@ export default {
 
 
     .container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+        display: flex;
+        float: right;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        margin-right: 450px;
+        margin-top: 100px;
+        width: 420px;
+        height: 327px;
+        color: #fff;
+        text-align: right;  
+    }
+
+    .title-content h1 {
+        font-size: 46px;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+    .itemOne p {
+        font-size: 70px;
+        font-weight: 900;
+        line-height: 82,03px;
+        color: var(--color--blue);
+    }
+
+    .itemOne span {
+        font-size: 28px;
+        line-height: 32,81px;
+        font-weight: 900;
+        float: right;
+        margin-top: 10px;
+    }
+
+    .itemTwo {
+        font-size: 16px;
+        line-height: 24,8px;
+        font-weight: 400;
+        color: #fff;
     }
 
     nav ul li{
@@ -128,7 +205,7 @@ export default {
         margin-top: 10px;
     } 
     
-    .dropdown-menu {
+    #dropdown-menu {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -145,11 +222,163 @@ export default {
         border-radius: 5px;
         border: 1px solid var(--color--blue);
         box-shadow: 10px 10px 0px var(--color--blue);
-        visibility:hidden;
+        visibility: hidden;
         opacity: 0;
     }
 
-    .dropdown-menu p {
+    #dropdown-menu.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @media (max-width: 960px) {
+
+        header {
+            height: 600px;
+        }
+
+        #dropdown-menu {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            margin: 0%;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0%;
+            box-shadow: none;
+        }
+
+        .dropdown-acao,
+        .dropdown-corrida,
+        .dropdown-luta {
+            width: 60% !important;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #062C38
+        }
+
+        .dropdown-corrida {
+            margin-bottom: 0px !important;
+        }
+
+        .items-dropdown:last-child {
+            padding-bottom: 20px;
+        }
+
+        .items-dropdown {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 21,09px;
+        }
+
+        p.title-acao,
+        p.title-corrida,
+        p.title-luta {
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 28,13px;
+
+        }
+
+        #icon-burguer {
+            margin-left: 150px;
+            z-index: 99999999;
+            width: 30px;
+        }
+
+        #logo {
+            z-index: 99999999;
+            margin-top: 10px;
+            margin-left: 80px;
+            width: 120px;
+            height: 25px;
+        }
+
+         #close-button {
+            z-index: 99999999;
+            display: block;
+            width: 30px;
+            margin-right: -75px;
+            margin-top: -32px;
+            margin-left: 0 !important;
+        }
+
+        .right-item {
+            border-right: none;
+            padding: 5px 5px 0px 0;
+        }
+
+        .right-items {
+            z-index: 99999999;
+            margin-top: 5px;
+            margin-right: 100px;
+        }
+
+        .right-item a {
+            display: none;
+            
+        }
+
+        .right-item img {
+            width: 40px;
+            
+        }
+
+        .left-items {
+            display: flex;
+            margin: 10px 20px 5px -80px;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.65);
+            position:absolute;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 200px;
+            color: #fff;        
+        }
+
+        .content {
+            padding-right: 30px;
+        }
+
+  
+        .title-content h1 {
+            font-size: 26px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .itemOne p {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 82,03px;
+            color: var(--color--blue);
+        }
+
+        .itemOne span {
+            font-size: 28px;
+            line-height: 32,81px;
+            font-weight: 900;
+            float: right;
+            margin-top: 10px;
+        }
+
+        .itemTwo p{
+            font-size: 12px;
+            line-height: 24,8px;
+            font-weight: 400;
+            color: #fff;
+        }
+
+
+    }
+
+    #dropdown-menu p {
         padding: 10px 0 10px 10px;
         transition: all 0.2s ease;
     }

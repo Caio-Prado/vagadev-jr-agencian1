@@ -16,7 +16,7 @@
 
 html,
 body {
-    background-color: var(--color--background);
+    background-color: #fff;
     overflow-x: hidden;
 }
 
