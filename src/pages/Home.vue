@@ -26,8 +26,8 @@
           <div class="description-item">
               <p class="title-item">Outriders</p>
               <p class="price-item">R$ 200,00</p>
-              <button class="button-item">Comprar</button>
-          </div>      
+          </div>
+            <button class="button-item">Comprar</button>      
         </article>
 
         <article class="item-destaques">
@@ -35,8 +35,8 @@
           <div class="description-item">
               <p class="title-item">CYBERPUNK 2077</p>
               <p class="price-item">R$ 200,00</p>
-              <button class="button-item">Comprar</button>
-          </div> 
+          </div>
+           <button class="button-item">Comprar</button> 
         </article>
 
         <article class="item-destaques">
@@ -44,17 +44,23 @@
           <div class="description-item">
               <p class="title-item">Donkey Kong Country Tropical Freeze</p>
               <p class="price-item">R$ 200,00</p>
-              <button class="button-item">Comprar</button>
-          </div> 
+          </div>
+            <button class="button-item">Comprar</button> 
         </article>
 
       </section>
+
+      <Slider/>
     </main>
 </template>
 
 <script>
+import Slider from '../components/Slider.vue'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Slider,
+  }
 }
 </script>
 
@@ -172,7 +178,10 @@ export default {
     border-end-start-radius: 10px;
     border-end-end-radius: 10px;
     box-shadow: 0 0 1em rgb(189 189 189);
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  } 
 
   .title-item {
     color: var(--color--dark-blue);
@@ -188,7 +197,7 @@ export default {
     font-size: 18px;
     line-height: 21,09px;
     font-weight: 900;
-    padding-bottom: 10px;
+    padding-bottom: 40px;
   }
 
   .button-item {
@@ -197,7 +206,6 @@ export default {
     color: #fff;
     cursor: pointer;
     text-transform: uppercase;
-    align-content: center;
     font-size: 16px;
     font-weight: 900;
     border-radius: 5px;
