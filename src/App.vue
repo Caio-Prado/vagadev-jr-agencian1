@@ -1,7 +1,6 @@
 <template>
   <div id="app">
 
-    <Header/>
     <Home/>
     <Footer/>
 
@@ -11,18 +10,14 @@
 <script>
 import './styles/global.css'
 
-import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home.vue'
 
 export default {
   name: 'App',
   components: {
-    Header,
     Home,
     Footer,
-    
-    
   }
 }
 </script>

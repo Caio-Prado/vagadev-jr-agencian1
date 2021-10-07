@@ -1,6 +1,6 @@
 <template>
 
-      <footer class="container">
+      <footer class="container-footer">
           <div class="content-left"><img src="../assets/img/logo-n1.png" alt=""></div>
           <div class="content-right">Agência N1 - Todos os direitos reservados</div>
       </footer>
@@ -15,12 +15,11 @@ export default {
 
 <style scoped>
 
-    .container {
+    .container-footer {
+        display: flex;
         bottom: 0;
-        position: initial;
         width: 100%;
         text-align: center;
-        display: flex;
     }
 
     .content-left {

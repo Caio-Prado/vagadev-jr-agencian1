@@ -43,12 +43,15 @@
 
                 <div class="right-item">
                     <img src="../assets/svgs/shopping-bag-solid.svg" alt="">
+                    <div class="count-purchased">
+                        <p>{{ countItem }}</p>
+                    </div>
                    <a href=""></a>
                 </div>
             </div>
         </nav>
 
-        <div class="container">
+        <div v-if="display" class="container">
             <div class="content">
                 <div class="title-content">
                     <h1>Mortal Kombat</h1>
@@ -66,24 +69,35 @@
 
 <script>
 export default {
+
     name: 'Header',
     data() {
         return {
             menuActive: false,
             showButtonClose: false,
-            showButtonBurguer: true
+            showButtonBurguer: true,
+            display: true
         }
     },
-    methods: {
+
+    props: [
+        'countItem'
+    ],
+
+     methods: {
+
         openMenu: function() {
             this.menuActive = true;
             this.showButtonClose = true;
             this.showButtonBurguer = false;
+            this.display = false;
         },
+
         closeMenu: function() {
             this.menuActive = false;
             this.showButtonClose = false;
             this.showButtonBurguer = true;
+            this.display = true;
         }
     }
 }
@@ -138,6 +152,19 @@ export default {
 
     .right-item img {
         padding-left: 10px;
+    }
+
+    .count-purchased {
+        margin-top: 5px;
+        margin-left: 3px;
+        text-align: center;
+        width: 23px;
+        height: 23px;
+        line-height: 23px;
+        font-size: 14px;
+        background: var(--color--blue);
+        color: #fff;
+        border-radius: 100%;
     }
 
     #logo{
