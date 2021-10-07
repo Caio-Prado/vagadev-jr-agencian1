@@ -38,7 +38,17 @@
               <p class="title-item">Outriders</p>
               <p class="price-item">R$ 200,00</p>
             </div>
-              <button @click="incrementPurchased()" class="button-item">Comprar</button>      
+              <button @click=" itemPurchasedOutriders()" v-if="buttonOff" class="button-item">
+                COMPRAR
+              </button>
+
+              <!--botão que irá aparecer ao clicar no botão comprar-->
+              <button class="button-itemPurchased" v-if="buttonPurchased">
+                 <div style="display: flex">
+                  <p>COMPRADO!</p>
+                 <img src="../assets/img/mario.png" alt="mario">
+                </div>
+              </button>      
           </article>
 
           <article class="item-destaques">
@@ -47,7 +57,17 @@
               <p class="title-item">CYBERPUNK 2077</p>
               <p class="price-item">R$ 200,00</p>
             </div>
-              <button @click="incrementPurchased()" class="button-item">Comprar</button>      
+              <button @click="itemPurchaseCiberpunk()" v-if="buttonOff2" class="button-item">
+                COMPRAR
+              </button>
+
+              <!--botão que irá aparecer ao clicar no botão comprar-->
+              <button class="button-itemPurchased" v-if="buttonPurchased2">
+                <div style="display: flex">
+                  <p>COMPRADO!</p>
+                 <img src="../assets/img/mario.png" alt="mario">
+                </div>
+              </button>      
           </article>
 
           <article class="item-destaques">
@@ -56,7 +76,17 @@
               <p class="title-item">Donkey Kong Country Tropical Freeze</p>
               <p class="price-item">R$ 200,00</p>
             </div>
-              <button @click="incrementPurchased()" class="button-item">Comprar</button>      
+              <button @click="itemPurchasedKong()" v-if="buttonOff3" class="button-item">
+                COMPRAR
+              </button>
+
+              <!--botão que irá aparecer ao clicar no botão comprar-->
+              <button class="button-itemPurchased" v-if="buttonPurchased3">
+                 <div style="display: flex">
+                  <p>COMPRADO!</p>
+                 <img src="../assets/img/mario.png" alt="mario">
+                </div>
+              </button>        
           </article>
 
         </div>
@@ -71,8 +101,8 @@
             <img @click="CloseModal()" src="../assets/img/closeModal.png" alt="buttonClose">
           </div>
           <div class="content-overlay">
-            <p>Pedido realizado com sucesso!</p>
-            <img src="../assets/img/mario.png" alt="mario">
+              <p>Pedido realizado com sucesso!</p>
+              <img src="../assets/img/mario.png" alt="mario">
           </div>
         </div>
       </div>
@@ -90,6 +120,13 @@ export default {
 
   data() {
     return {
+      buttonOff: true,
+      buttonOff2: true,
+      buttonOff3: true,
+      buttonPurchased: false,
+      buttonPurchased2: false,
+      buttonPurchased3: false,
+      purchasedItem: false,
       showIcons: true,
       showOverlay: false,
       countItem: 0,
@@ -119,10 +156,31 @@ export default {
         }
       },
 
-      incrementPurchased() {
+      itemPurchasedOutriders() {
         this.countItem++
         this.showIcons = false
         this.showOverlay = true
+        this.purchasedItem = true
+        this.buttonOff = false,
+        this.buttonPurchased = true
+      },
+
+      itemPurchaseCiberpunk() {
+        this.countItem++
+        this.showIcons = false
+        this.showOverlay = true
+        this.purchasedItem = true
+        this.buttonOff2 = false,
+        this.buttonPurchased2 = true
+      },
+
+      itemPurchasedKong() {
+        this.countItem++
+        this.showIcons = false
+        this.showOverlay = true
+        this.purchasedItem = true
+        this.buttonOff3 = false,
+        this.buttonPurchased3 = true
       },
 
       CloseModal() {
@@ -135,7 +193,6 @@ export default {
 </script>
 
 <style scoped>
-
 
 .overlay{
   position: fixed;
@@ -354,6 +411,14 @@ export default {
     display: none;
 }
 
+.button-itemPurchased img {
+    position: absolute;
+    width: 80px !important;
+    margin-right: -50px;
+    margin-top: -44px;
+    margin-left: 75px;
+}
+
 .icone {
     width: 15px;
 }
@@ -424,6 +489,18 @@ export default {
   .button-item {
     border: none;
     background-color: var(--color--blue);
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 900;
+    border-radius: 5px;
+    padding: 8px 50px 8px 50px;
+  }
+
+  .button-itemPurchased {
+    border: none;
+    background-color: var(--color--dark-blue);
     color: #fff;
     cursor: pointer;
     text-transform: uppercase;
