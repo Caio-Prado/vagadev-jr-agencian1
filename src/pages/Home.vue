@@ -194,6 +194,7 @@ export default {
 
 <style scoped>
 
+/**************************Modal****************************/
 .overlay{
   position: fixed;
   top: 0;

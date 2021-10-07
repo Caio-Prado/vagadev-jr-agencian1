@@ -51,7 +51,7 @@
             </div>
         </nav>
 
-        <div v-if="display" class="container">
+        <div class="container">
             <div class="content">
                 <div class="title-content">
                     <h1>Mortal Kombat</h1>
@@ -76,7 +76,6 @@ export default {
             menuActive: false,
             showButtonClose: false,
             showButtonBurguer: true,
-            display: true
         }
     },
 
@@ -90,14 +89,12 @@ export default {
             this.menuActive = true;
             this.showButtonClose = true;
             this.showButtonBurguer = false;
-            this.display = false;
         },
 
         closeMenu: function() {
             this.menuActive = false;
             this.showButtonClose = false;
             this.showButtonBurguer = true;
-            this.display = true;
         }
     }
 }
@@ -118,15 +115,45 @@ export default {
         justify-content: space-around;    
     }
 
+    nav ul li{
+        width: 120px;
+        float: left;
+        text-align: center;
+        margin-top: 10px;
+    } 
+
+
+
+
+    /******************************itens navbar******************************/
+
+    /****itens da esquerda****/ 
+    .left-items {
+        margin: 50px;
+    }
+
+    #logo{
+        margin-left: 40px;
+        width: 163px;
+        height: 35px;
+        left: 446px;
+        top: 44px;
+    }
+
+    #icon-burguer {
+       left: calc(50% - 30px/2 - 572px);
+       top: calc(50% - 24px/2 - 1011px);
+       margin-left: 80px;
+       cursor: pointer;
+    }
+
     #close-button {
         margin-left: -30px;
         cursor: pointer;
     }
 
-    .left-items {
-        margin: 50px;
-    }
 
+    /****itens da direita*****/
     .right-items {
         margin: 50px;
         display: flex;
@@ -167,22 +194,10 @@ export default {
         border-radius: 100%;
     }
 
-    #logo{
-        margin-left: 40px;
-        width: 163px;
-        height: 35px;
-        left: 446px;
-        top: 44px;
-    }
-
-    #icon-burguer {
-       left: calc(50% - 30px/2 - 572px);
-       top: calc(50% - 24px/2 - 1011px);
-       margin-left: 80px;
-       cursor: pointer;
-    }
 
 
+
+    /*********div mortal kombat**********/
     .container {
         display: flex;
         float: right;
@@ -225,13 +240,10 @@ export default {
         color: #fff;
     }
 
-    nav ul li{
-        width: 120px;
-        float: left;
-        text-align: center;
-        margin-top: 10px;
-    } 
-    
+
+
+
+    /**************Menu dropdown da nav*****************/
     #dropdown-menu {
         display: flex;
         justify-content: center;
@@ -258,15 +270,66 @@ export default {
         opacity: 1;
     }
 
-    @media (max-width: 960px) {
+    #dropdown-menu p {
+        padding: 10px 0 10px 10px;
+        transition: all 0.2s ease;
+    }
 
+    .nav-bar ul li:hover  .dropdown-menu{
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .title-acao,
+    .title-luta,
+    .title-corrida {
+        cursor: default;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .dropdown-luta, 
+    .dropdown-acao, 
+    .dropdown-corrida {
+        font-size: 14px;
+        line-height: 16px;
+        width: 30%;
+        float: left;
+        margin-right: 1%;
+        text-align: start;
+        margin-left: 20px;
+    }
+
+    .dropdown-luta {
+        padding-left: 15px;
+    }
+
+    .dropdown-acao {
+        padding-left: 20px;
+        margin-bottom: 35px;
+    }
+
+    .dropdown-corrida {
+        padding-left: 20px;
+        margin-bottom: 70px;
+    }
+    
+    .items-dropdown:hover {
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: var(--color--blue);
+    }
+
+
+    @media (max-width: 960px) {
         header {
             height: 600px;
         }
 
         #dropdown-menu {
             top: 0;
-            bottom: 0;
             left: 0;
             display: flex;
             flex-direction: column;
@@ -401,60 +464,6 @@ export default {
             font-weight: 400;
             color: #fff;
         }
-
-
-    }
-
-    #dropdown-menu p {
-        padding: 10px 0 10px 10px;
-        transition: all 0.2s ease;
-    }
-
-    .nav-bar ul li:hover  .dropdown-menu{
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .title-acao,
-    .title-luta,
-    .title-corrida {
-        cursor: default;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 19px;
-    }
-
-    .dropdown-luta, 
-    .dropdown-acao, 
-    .dropdown-corrida {
-        font-size: 14px;
-        line-height: 16px;
-        width: 30%;
-        float: left;
-        margin-right: 1%;
-        text-align: start;
-        margin-left: 20px;
-    }
-
-    .dropdown-luta {
-        padding-left: 15px;
-    }
-
-    .dropdown-acao {
-        padding-left: 20px;
-        margin-bottom: 35px;
-    }
-
-    .dropdown-corrida {
-        padding-left: 20px;
-        margin-bottom: 70px;
-    }
-    
-    .items-dropdown:hover {
-        cursor: pointer;
-        border-radius: 5px;
-        background-color: var(--color--blue);
     }
 
 </style>
