@@ -16,6 +16,7 @@ export default {
 <style scoped>
 
     .container-footer {
+
         display: flex;
         bottom: 0;
         width: 100%;

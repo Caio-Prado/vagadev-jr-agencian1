@@ -1,5 +1,6 @@
 <template>
-      <header>
+<div>
+    <header>
         <nav class="nav-bar">
             <ul class="left-items">
                 <li>
@@ -32,10 +33,10 @@
             </ul>
             <div class="right-items">
                 <div class="right-item">
-                    <router-link to="/contato">
-                        <img src="../assets/svgs/paper-plane.svg" alt="">
+                    <router-link to="/">
+                        <img src="../assets/svgs/home.svg" alt="">
                     </router-link>   
-                        <span><router-link to="/contato">Contato</router-link></span>
+                        <span><router-link to="/">Home</router-link></span>
                 </div>
 
                 <div class="right-item">
@@ -45,35 +46,32 @@
 
                 <div class="right-item">
                     <img src="../assets/svgs/shopping-bag-solid.svg" alt="">
-                    <div class="count-purchased">
-                        <p>{{ countItem }}</p>
-                    </div>
-                    <a href=""></a>
                 </div>
             </div>
         </nav>
-
-        <div class="container">
-            <div class="content">
-                <div class="title-content">
-                    <h1>Mortal Kombat</h1>
-                </div>
-                <div class="itemOne">
-                    <p>R$ 299<span>,99</span></p>
-                </div>
-                <div class="itemTwo">
-                    <p>Mortal Kombat X combina uma apresentação cinemática única com uma jogabilidade totalmente nova. Os jogadores podem escolher pela primeira vez diversas variantes de cada personagem, afetando tanto a estratégia como o estilo de luta.</p>
-                </div>
-            </div>
+        <div class="container-form">
+          <div class="form">
+            <form id="form" class="topBefore">  
+                <input id="name" type="text" placeholder="NOME">
+                <input id="email" type="text" placeholder="E-MAIL">
+                <textarea id="message" type="text" placeholder="MENSAGEM"></textarea>
+                <input id="submit" type="submit" value="ENVIAR">
+            </form> 
+          </div>
         </div>
-      </header>
+    </header>
+</div>   
+  
 </template>
 
 <script>
 
-export default {
 
-    name: 'Header',
+export default {
+    name: 'Contato',
+    components: {
+    },
+
     data() {
         return {
             menuActive: false,
@@ -98,24 +96,29 @@ export default {
             this.menuActive = false;
             this.showButtonClose = false;
             this.showButtonBurguer = true;
-        },
+        }
     }
 }
 </script>
 
 <style scoped>
-    header {
+
+/******************************Header******************************/
+
+     header {
         position: sticky;
-        background-image: url('../assets/img/principal_banner_desktop.jpg');
+        background-image: url('../assets/img/principal_banner_desktop_02.jpg');
         background-repeat: no-repeat;
         background-size: cover;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
     }
 
     nav { 
         display: flex;
-        justify-content: space-around;    
+        justify-content: space-around;
+        background-color: #0000003d;
+        box-shadow: 10px 5px 5px #00000080;    
     }
 
     nav ul li{
@@ -124,9 +127,6 @@ export default {
         text-align: center;
         margin-top: 10px;
     } 
-
-
-
 
     /******************************itens navbar******************************/
 
@@ -158,8 +158,14 @@ export default {
 
     /****itens da direita*****/
     .right-items {
-        margin: 50px;
+        margin: 45px;
         display: flex;
+        margin-right: 105px;
+    }
+
+    .right-item span {
+        color: #fff;
+        display: block;
     }
 
     .right-item:last-child {
@@ -180,11 +186,6 @@ export default {
         padding-right: 10px;
     }
 
-    .right-item span {
-        color: #fff;
-        display: block;
-    }
-
     .right-item img {
         padding-left: 10px;
     }
@@ -200,52 +201,6 @@ export default {
         background: var(--color--blue);
         color: #fff;
         border-radius: 100%;
-    }
-
-
-
-
-    /*********div mortal kombat**********/
-    .container {
-        display: flex;
-        float: right;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        margin-right: 450px;
-        margin-top: 100px;
-        width: 420px;
-        height: 327px;
-        color: #fff;
-        text-align: right;  
-    }
-
-    .title-content h1 {
-        font-size: 46px;
-        text-transform: uppercase;
-        color: #fff;
-    }
-
-    .itemOne p {
-        font-size: 70px;
-        font-weight: 900;
-        line-height: 82,03px;
-        color: var(--color--blue);
-    }
-
-    .itemOne span {
-        font-size: 28px;
-        line-height: 32,81px;
-        font-weight: 900;
-        float: right;
-        margin-top: 10px;
-    }
-
-    .itemTwo {
-        font-size: 16px;
-        line-height: 24,8px;
-        font-weight: 400;
-        color: #fff;
     }
 
 
@@ -274,7 +229,7 @@ export default {
     }
 
     #dropdown-menu.active {
-        z-index: 9999999;
+        z-index: 999999;
         visibility: visible;
         opacity: 1;
     }
@@ -334,7 +289,8 @@ export default {
 
     @media (max-width: 960px) {
         header {
-            height: 600px;
+            background-image: url('../assets/img/principal_banner_mobile_02.jpg');
+            height: 100vh;
         }
 
         #dropdown-menu {
@@ -400,7 +356,7 @@ export default {
             display: block;
             width: 30px;
             margin-right: -75px;
-            margin-top: -37px;
+            margin-top: -32px;
             margin-left: 0 !important;
         }
 
@@ -412,8 +368,7 @@ export default {
         .right-items {
             z-index: 99999999;
             margin-top: 25px;
-            margin-right: 100px;
-            margin-left: 10px;
+            margin-left: 50px;
         }
 
        .right-item span {
@@ -427,53 +382,114 @@ export default {
 
         .left-items {
             display: flex;
-            margin: 25px 20px 5px -25px;
+            margin: 25px 20px 5px -50px;
         }
 
-
-        .container {
-            background: rgba(0, 0, 0, 0.65);
-            position:absolute;
-            bottom: 0;
-            display: flex;
-            flex-direction: column;
-            width: 100vw;
-            height: 200px;
-            color: #fff;        
-        }
-
-        .content {
-            padding-right: 30px;
-        }
-
-  
-        .title-content h1 {
-            font-size: 26px;
-            text-transform: uppercase;
-            color: #fff;
-        }
-
-        .itemOne p {
-            font-size: 48px;
-            font-weight: 900;
-            line-height: 82,03px;
-            color: var(--color--blue);
-        }
-
-        .itemOne span {
-            font-size: 28px;
-            line-height: 32,81px;
-            font-weight: 900;
-            float: right;
-            margin-top: 10px;
-        }
-
-        .itemTwo p{
-            font-size: 12px;
-            line-height: 24,8px;
-            font-weight: 400;
-            color: #fff;
-        }
     }
+
+
+
+
+
+/******************************Form******************************/
+
+#form {
+  position: relative;
+  width: 500px;
+  margin: 50px 20px 100px auto;
+}
+
+input {
+  font-size: 0.875em;
+  width: 470px;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  
+  background: #3c3c3c;
+  outline: none;
+  color: #726659;
+  
+  border: solid 1px #b3aca7;
+  border-bottom: none;
+  
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+input:hover {
+  box-shadow: 0 0 0.5em#fff;  
+  color: #e2dedb;
+}
+
+textarea {
+  width: 470px;
+  max-width: 470px;
+  height: 110px;
+  max-height: 110px;
+  padding: 15px;
+  
+  background: #3c3c3c;
+  outline: none;
+  
+  color: #726659;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.875em;
+  
+  border: solid 1px #b3aca7;
+  
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+}
+
+textarea:hover {
+  box-shadow: 0 0 0.5em#fff;  
+  color: #e2dedb;
+}
+
+#submit {
+ 
+  padding: 0;
+  margin: -5px 0px 0px 0px;
+  background-color: #101010;
+  font-size: 0.875em;
+  color: #b3aca7; 
+  outline:none;
+  cursor: pointer; 
+  border: solid 1px #b3aca7;
+  border-top: none;
+}
+
+#submit:hover {
+  color: #e2dedb;
+}
+
+/*********div form**********/
+    .container-form {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 70px;
+    }
+
+    .form {
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 50px;
+        border-radius: 20px;
+    }
+
+@media (max-width: 960px) {
+    #form {
+        position: relative;
+        width: 100px;
+        margin: 50px 20px 100px -60px;
+    }
+}
+
+
 
 </style>
